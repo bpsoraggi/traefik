@@ -1,4 +1,3 @@
-
 <p align="center">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="docs/content/assets/img/traefik.logo-dark.png">
@@ -13,6 +12,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/traefik/traefik/blob/master/LICENSE.md)
 [![Join the community support forum at https://community.traefik.io/](https://img.shields.io/badge/style-register-green.svg?style=social&label=Discourse)](https://community.traefik.io/)
 [![Twitter](https://img.shields.io/twitter/follow/traefik.svg?style=social)](https://twitter.com/intent/follow?screen_name=traefik)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fbpsoraggi%2Ftraefik.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fbpsoraggi%2Ftraefik?ref=badge_shield)
 
 Traefik (pronounced _traffic_) is a modern HTTP reverse proxy and load balancer that makes deploying microservices easy.
 Traefik integrates with your existing infrastructure components ([Docker](https://www.docker.com/), [Swarm mode](https://docs.docker.com/engine/swarm/), [Kubernetes](https://kubernetes.io), [Consul](https://www.consul.io/), [Etcd](https://coreos.com/etcd/), [Rancher v2](https://rancher.com), [Amazon ECS](https://aws.amazon.com/ecs), ...) and configures itself automatically and dynamically.
@@ -158,3 +158,7 @@ The gopher's logo of Traefik is licensed under the Creative Commons 3.0 Attribut
 
 The gopher's logo of Traefik was inspired by the gopher stickers made by [Takuya Ueda](https://twitter.com/tenntenn).
 The original Go gopher was designed by [Renee French](https://reneefrench.blogspot.com/).
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fbpsoraggi%2Ftraefik.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fbpsoraggi%2Ftraefik?ref=badge_large)
