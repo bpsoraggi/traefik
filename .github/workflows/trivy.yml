@@ -47,9 +47,9 @@ jobs:
         uses: aquasecurity/trivy-action@0.33.1
         with:
           image-ref: 'ghcr.io/traefik/traefik:latest'
-          format: 'table'
-        #   format: 'template'
-        #   template: "@$HOME/.local/bin/trivy-bin/contrib/html.tpl"
+        #   format: 'table'
+          format: 'template'
+          template: "@$HOME/.local/bin/trivy-bin/contrib/html.tpl"
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
