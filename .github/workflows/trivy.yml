@@ -33,6 +33,19 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'
 
+      - name: Run Trivy secret scanner in repo mode
+        uses: aquasecurity/trivy-action@0.33.1
+        with:
+          scan-type: 'fs'
+          scanners: 'secret'
+          format: 'sarif'
+          output: 'trivy-secrets.sarif'
+
+      - name: Upload Trivy secret scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-secrets.sarif'
+
       - name: Run Trivy in GitHub SBOM mode and submit results to Dependency Graph
         uses: aquasecurity/trivy-action@0.33.1
         with:
