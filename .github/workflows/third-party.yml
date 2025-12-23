@@ -1,0 +1,68 @@
+name: Third Party
+
+on:
+  push:
+    branches:
+      - test/third-party
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+
+      - name: Setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        working-directory: compliance
+        run: npm install
+
+      - name: Get Aikido credentials
+        id: aikido_token
+        env:
+          AIK_CLIENT: ${{ secrets.AIK_CLIENT }}
+          AIK_SECRET: ${{ secrets.AIK_SECRET }}
+        run: |
+          set -euo pipefail
+          resp="$(curl -sS -u "$AIK_CLIENT:$AIK_SECRET" --request POST \
+            --url https://app.aikido.dev/api/oauth/token \
+            --header 'accept: application/json' \
+            --header 'content-type: application/json' \
+            --data '{"grant_type": "client_credentials"}')"
+          token="$(echo "$resp" | jq -r '.access_token')"
+          if [ -z "$token" ] || [ "$token" == "null" ]; then
+            echo "Failed to get access token from Aikido"
+            exit 1
+          fi
+          echo "AIKIDO_TOKEN=$token" >> $GITHUB_ENV
+
+      - name: Get SBOM
+        env:
+          AIKIDO_REPO_CODE: ${{ secrets.AIKIDO_REPO_CODE }}
+          AIKIDO_TOKEN: ${{ env.AIKIDO_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p compliance/sbom
+          curl -sS --request GET \
+            --url "https://app.aikido.dev/api/public/v1/repositories/code/$AIKIDO_REPO_CODE/licenses/export?format=sbom" \
+            --header 'accept: application/json' \
+            --header "authorization: Bearer $AIKIDO_TOKEN" \
+            -o compliance/sbom/traefik.cdx.json
+
+      - name: Generate attributions
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          node compliance/generate-attribution.js
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: third-party-attributions
+          path: third_party/

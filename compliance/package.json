@@ -1,0 +1,9 @@
+{
+    "name": "third-party-notices",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+        "handlebars": "^4.7.8",
+        "license-expressions": "^0.8.0"
+    }
+}

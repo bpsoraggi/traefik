@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    @media (prefers-color-scheme: dark) {
+      body { background: #333; color: white; }
+      a { color: skyblue; }
+    }
+    .container { font-family: sans-serif; max-width: 900px; margin: 0 auto; padding: 24px; }
+    .intro { text-align: center; }
+    .licenses-list { list-style-type: none; margin: 0; padding: 0; }
+    .license-used-by { margin-top: -10px; }
+    .license-text { max-height: 240px; overflow-y: auto; white-space: pre-wrap; border: 1px solid #999; padding: 12px; border-radius: 8px; }
+    .pill { display:inline-block; padding:2px 8px; border:1px solid #999; border-radius:999px; font-size: 12px; margin-left: 8px; }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="intro">
+      <h1>Third Party Licenses</h1>
+      <p>This product includes third-party open source components. This page lists the licenses for those components.</p>
+      <p><small>Generated: {{generatedAt}}</small></p>
+    </div>
+
+    <h2>Overview of licenses</h2>
+    <ul class="licenses-overview">
+      {{#each overview}}
+        <li><a href="#{{id}}">{{name}}</a> ({{count}})</li>
+      {{/each}}
+    </ul>
+
+    <h2>All license text</h2>
+    <ul class="licenses-list">
+      {{#each licenses}}
+        <li class="license">
+          <h3 id="{{id}}">{{name}} <span class="pill">{{id}}</span></h3>
+          <h4>Used by:</h4>
+          <ul class="license-used-by">
+            {{#each used_by}}
+              <li>
+                {{#if component.url}}
+                  <a href="{{component.url}}">{{component.name}} {{component.version}}</a>
+                {{else}}
+                  {{component.name}} {{component.version}}
+                {{/if}}
+                {{#if component.purl}} <small>({{component.purl}})</small>{{/if}}
+              </li>
+            {{/each}}
+          </ul>
+          <pre class="license-text">{{text}}</pre>
+        </li>
+      {{/each}}
+    </ul>
+  </main>
+</body>
+</html>

@@ -1,0 +1,25 @@
+NOTICE
+
+This product uses source code from third party libraries which carry
+their own copyright notices and license terms. These notices are provided
+below.
+
+Generated at: {{generatedAt}}
+
+---
+{{#each notices}}
+
+## {{name}} {{version}}
+
+{{#if purl}}PURL: {{purl}}{{/if}}
+
+{{#if url}}Upstream: [{{url}}]({{url}}){{/if}}
+
+Licenses: {{#each licenseIds}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+
+{{copyright}}
+{{/each}}
+
+---
+
+License texts: see [THIRD_PARTY_LICENSES.html](./THIRD_PARTY_LICENSES.html) and/or the [`licenses/`](./licenses/) directory.
