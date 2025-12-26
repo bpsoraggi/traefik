@@ -66,3 +66,10 @@ jobs:
         with:
           name: third-party-attributions
           path: third_party/
+
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "chore(deps): update sbom & third party attributions"
+          committer_name: "traefiker@github"
+          committer_email: "30906710+traefiker@users.noreply.github.com"
