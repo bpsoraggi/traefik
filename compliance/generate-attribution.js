@@ -18,6 +18,11 @@ const CONFIG = {
   outLicensesDir: "third_party/licenses",
   customLicenseDir: "compliance/custom-license-texts",
   spdxVersion: "v3.27.0",
+  ignore: {
+    patterns: [
+      /@[^@]*use\.local\b/i,
+    ],
+  },
 };
 
 const readJson = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
@@ -102,14 +107,14 @@ function normalizeLicenseIds(licenses, licenseMap) {
     const expr = item?.expression || item?.license?.name;
     if (!expr) { continue; }
 
-    if (validateLicenseExpression(expr).valid) {
-      const parsedExpr = parseLicenseExpression(expr, { upgradeGPLVariants: true });
-      getLicensesRec(parsedExpr, ids);
+    if (licenseMap[expr]) {
+      ids.push(licenseMap[expr]);
       continue;
     }
 
-    if (licenseMap[expr]) {
-      ids.push(licenseMap[expr]);
+    if (validateLicenseExpression(expr).valid) {
+      const parsedExpr = parseLicenseExpression(expr, { upgradeGPLVariants: true });
+      getLicensesRec(parsedExpr, ids);
     } else {
       ids.push(`LicenseRef-UNKNOWN-${expr.replace(/[^A-Za-z0-9]+/g, "-").slice(0, 40)}`);
     }
@@ -145,6 +150,8 @@ function buildIndex(components, licenseMap) {
   const byPurl = new Map();
 
   for (const c of components) {
+    if (CONFIG.ignore.patterns.some((p) => p.test(c.purl || ""))) { continue; }
+    
     const licenseIds = normalizeLicenseIds(c.licenses, licenseMap);
 
     const comp = {
