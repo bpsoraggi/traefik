@@ -41,6 +41,8 @@ plugins:
   - exclude:
       glob:
         - "**/include-*.md"
+  - include-markdown:
+      encoding: utf-8
   - redirects:
       redirect_maps:
         # Providers
@@ -176,9 +178,6 @@ markdown_extensions:
   - pymdownx.tasklist
   - pymdownx.snippets:
       check_paths: true
-  - markdown_include.include:
-      base_path: content/includes/
-      encoding: utf-8
   - toc:
       permalink: true
 
