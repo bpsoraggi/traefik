@@ -1,0 +1,67 @@
+name: Third Party
+
+on:
+  push:
+    branches:
+      - test/assimilis
+
+env:
+  ASSIMILIS_VERSION: v0.1.0
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+
+      - name: Setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Setup go
+        uses: actions/setup-go@v6
+        with:
+          go-version: '1.24'
+
+      - name: Get Aikido credentials
+        id: aikido_token
+        env:
+          AIK_CLIENT: ${{ secrets.AIK_CLIENT }}
+          AIK_SECRET: ${{ secrets.AIK_SECRET }}
+        run: |
+          set -euo pipefail
+          resp="$(curl -sS -u "$AIK_CLIENT:$AIK_SECRET" --request POST \
+            --url https://app.aikido.dev/api/oauth/token \
+            --header 'accept: application/json' \
+            --header 'content-type: application/json' \
+            --data '{"grant_type": "client_credentials"}')"
+          token="$(echo "$resp" | jq -r '.access_token')"
+          if [ -z "$token" ] || [ "$token" == "null" ]; then
+            echo "Failed to get access token from Aikido"
+            exit 1
+          fi
+          echo "AIKIDO_TOKEN=$token" >> $GITHUB_ENV
+
+      - name: Get SBOM
+        env:
+          AIKIDO_REPO_CODE: ${{ secrets.AIKIDO_REPO_CODE }}
+          AIKIDO_TOKEN: ${{ env.AIKIDO_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p third_party/sbom
+          curl -sS --request GET \
+            --url "https://app.aikido.dev/api/public/v1/repositories/code/$AIKIDO_REPO_CODE/licenses/export?format=sbom" \
+            --header 'accept: application/json' \
+            --header "authorization: Bearer $AIKIDO_TOKEN" \
+            -o third_party/sbom/traefik.cdx.json
+
+      - name: Install Assimilis ${{ env.ASSIMILIS_VERSION }}
+        run: curl -sSfL https://raw.githubusercontent.com/bpsoraggi/assimilis/refs/heads/test/godownloader.sh | sh -s -- -b $HOME/bin ${ASSIMILIS_VERSION}
+        # run: curl -sSfL https://raw.githubusercontent.com/traefik/assimilis/master/godownloader.sh | sh -s -- -b $HOME/bin ${ASSIMILIS_VERSION}
+
+      - name: Generate attributions
+        run: $HOME/bin/assimilis --repo-name ${{ github.event.repository.name }}
