@@ -9,25 +9,26 @@ env:
   GO_VERSION: '1.24'
   CGO_ENABLED: 0
   VERSION: ${{ github.ref_name }}
-  TRAEFIKER_EMAIL: "traefiker@traefik.io"
   CODENAME: ramequin
 
 jobs:
 
-  build-webui:
-    if: github.ref_type == 'tag' && github.repository == 'traefik/traefik'
-    uses: ./.github/workflows/template-webui.yaml
+  # build-webui:
+  #   if: github.ref_type == 'tag' && github.repository == 'traefik/traefik'
+  #   uses: ./.github/workflows/template-webui.yaml
 
   build:
-    if: github.ref_type == 'tag' && github.repository == 'traefik/traefik'
+    if: github.ref_type == 'tag' && github.repository == 'bpsoraggi/traefik'
     runs-on: ubuntu-latest
     timeout-minutes: 45
 
     strategy:
       matrix:
-        os: [ linux-amd64, linux-386, linux-arm, linux-arm64, linux-ppc64le, linux-s390x, linux-riscv64, darwin-amd64, darwin-arm64, windows-amd64, windows-arm64, windows-386, freebsd-amd64, freebsd-386, openbsd-amd64, openbsd-386, openbsd-riscv64 ]
-    needs:
-      - build-webui
+        # os: [ linux-amd64, linux-386, linux-arm, linux-arm64, linux-ppc64le, linux-s390x, linux-riscv64, darwin-amd64, darwin-arm64, windows-amd64, windows-arm64, windows-386, freebsd-amd64, freebsd-386, openbsd-amd64, openbsd-386, openbsd-riscv64 ]
+        # os: [ darwin-amd64, darwin-arm64, windows-amd64, windows-arm64 ]
+        os: [ darwin-arm64 ]
+    # needs:
+    #   - build-webui
 
     steps:
       - name: Check out code
@@ -44,15 +45,15 @@ jobs:
           go-version: ${{ env.GO_VERSION }}
           check-latest: true
 
-      - name: Artifact webui
-        uses: actions/download-artifact@v7
-        with:
-          name: webui.tar.gz
+      # - name: Artifact webui
+      #   uses: actions/download-artifact@v7
+      #   with:
+      #     name: webui.tar.gz
 
-      - name: Untar webui
-        run: |
-          tar xvf webui.tar.gz
-          rm webui.tar.gz
+      # - name: Untar webui
+      #   run: |
+      #     tar xvf webui.tar.gz
+      #     rm webui.tar.gz
 
       - name: Go generate
         run: go generate
@@ -69,7 +70,7 @@ jobs:
           distribution: goreleaser
           # 'latest', 'nightly', or a semver
           version: '~> v2'
-          args: release --clean --timeout="90m" --config "${{ env.GORELEASER_CONFIG_FILE_PATH }}"
+          args: release --skip=publish --clean --timeout="90m" --config "${{ env.GORELEASER_CONFIG_FILE_PATH }}"
 
       - name: Artifact binaries
         uses: actions/upload-artifact@v4
@@ -82,7 +83,7 @@ jobs:
           retention-days: 1
 
   release:
-    if: github.ref_type == 'tag' && github.repository == 'traefik/traefik'
+    if: github.ref_type == 'tag' && github.repository == 'bpsoraggi/traefik'
     runs-on: ubuntu-latest
     timeout-minutes: 45
 
@@ -95,22 +96,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Artifact webui
-        uses: actions/download-artifact@v7
-        with:
-          name: webui.tar.gz
+      # - name: Artifact webui
+      #   uses: actions/download-artifact@v7
+      #   with:
+      #     name: webui.tar.gz
 
-      - name: Untar webui
-        run: |
-          tar xvf webui.tar.gz
-          rm webui.tar.gz
+      # - name: Untar webui
+      #   run: |
+      #     tar xvf webui.tar.gz
+      #     rm webui.tar.gz
 
-      - name: Retrieve the secret and decode it to a file
-        env:
-          TRAEFIKER_RSA: ${{ secrets.TRAEFIKER_RSA }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "${TRAEFIKER_RSA}" | base64 --decode > ~/.ssh/traefiker_rsa
+      # - name: Retrieve the secret and decode it to a file
+      #   env:
+      #     TRAEFIKER_RSA: ${{ secrets.TRAEFIKER_RSA }}
+      #   run: |
+      #     mkdir -p ~/.ssh
+      #     echo "${TRAEFIKER_RSA}" | base64 --decode > ~/.ssh/traefiker_rsa
 
       - name: Download All Artifacts
         uses: actions/download-artifact@v7
@@ -132,6 +133,6 @@ jobs:
             --exclude dist .
           
           chown -R "$(id -u)":"$(id -g)" dist/
-          gh release create ${VERSION} ./dist/**/traefik*.{zip,tar.gz} ./dist/traefik*.{tar.gz,txt} --repo traefik/traefik --title ${VERSION} --notes ${VERSION} --latest=false
+          tar cfz "dist/third_party_${VERSION}.tar.gz" third_party/
+          gh release create ${VERSION} ./dist/third_party_${VERSION}.tar.gz --repo bpsoraggi/traefik --title ${VERSION} --notes ${VERSION} --latest=false
           
-          ./script/deploy.sh
