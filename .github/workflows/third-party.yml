@@ -1,12 +1,16 @@
 name: Third Party
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - test/assimilis
+  # schedule:
+  #   - cron: "0 0 * * *" # Run every day
 
 env:
-  ASSIMILIS_VERSION: v0.1.2
+  ASSIMILIS_VERSION: v1.0.0
+  AIKIDO_REPO_CODE: "1232941"
 
 jobs:
   build:
@@ -20,6 +24,7 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version: '1.25'
+          # go-version-file: go.mod
 
       - name: Get Aikido credentials
         id: aikido_token
@@ -42,13 +47,12 @@ jobs:
 
       - name: Get SBOM
         env:
-          AIKIDO_REPO_CODE: ${{ secrets.AIKIDO_REPO_CODE }}
           AIKIDO_TOKEN: ${{ env.AIKIDO_TOKEN }}
         run: |
           set -euo pipefail
           mkdir -p third_party/sbom
           curl -sS --request GET \
-            --url "https://app.aikido.dev/api/public/v1/repositories/code/$AIKIDO_REPO_CODE/licenses/export?format=sbom" \
+            --url "https://app.aikido.dev/api/public/v1/repositories/code/${{ env.AIKIDO_REPO_CODE }}/licenses/export?format=sbom" \
             --header 'accept: application/json' \
             --header "authorization: Bearer $AIKIDO_TOKEN" \
             -o third_party/sbom/traefik.cdx.json
@@ -56,11 +60,24 @@ jobs:
       - name: Install Assimilis ${{ env.ASSIMILIS_VERSION }}
         run: |
           mkdir -p $HOME/bin
-          GOBIN=/tmp/assimilis go install github.com/bpsoraggi/assimilis/cmd@${{ env.ASSIMILIS_VERSION }} && \
+          GOBIN=/tmp/assimilis go install github.com/traefik/assimilis/cmd@${{ env.ASSIMILIS_VERSION }} && \
             mv /tmp/assimilis/cmd $HOME/bin/assimilis
 
       - name: Generate attributions
-        run: $HOME/bin/assimilis --repo-name ${{ github.event.repository.name }}
+        id: generate_attributions
+        continue-on-error: true
+        run: |
+          set +e
+          $HOME/bin/assimilis --repo-name ${{ github.event.repository.name }} 2>&1 | tee third_party/assimilis.log
+          exit_code=${PIPESTATUS[0]}
+          set -e
+          pr_body="> [!NOTE]
+            > testing PASS"
+          if [ $exit_code -ne 0 ]; then
+            pr_body="> [!IMPORTANT]
+            > testing FAIL"
+          fi
+          echo "PR_BODY=$pr_body" >> $GITHUB_OUTPUT
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -68,9 +85,28 @@ jobs:
           name: third-party-attributions
           path: third_party/
 
-      - name: Commit and push changes
-        uses: EndBug/add-and-commit@v9
+      # - name: Commit and push changes
+      #   uses: EndBug/add-and-commit@v9
+      #   with:
+      #     message: "chore(deps): update sbom & third party attributions"
+      #     committer_name: "traefiker@github"
+      #     committer_email: "30906710+traefiker@users.noreply.github.com"
+
+
+      - name: create PR
+        uses: peter-evans/create-pull-request@v8
         with:
-          message: "chore(deps): update sbom & third party attributions"
-          committer_name: "traefiker@github"
-          committer_email: "30906710+traefiker@users.noreply.github.com"
+          # token: ${{ secrets.TRAEFIKER_GITHUB_TOKEN }}
+          add-paths: "third_party/"
+          commit-message: "chore(deps): update sbom and third-party attributions"
+          # committer: "Traefiker <traefiker@github.com>"
+          branch: third-party-${{ github.ref_name }}
+          delete-branch: true
+          base: "test/assimilis"
+          title: 'chore(deps): update sbom and third-party attributions'
+          # labels: kind/enhancement,status/2-needs-review
+          body: ${{ steps.generate_attributions.outputs.PR_BODY }}
+          # body: |
+          #   ### Motivation
+            
+          #   Update the SBOM and third-party attributions to the latest versions.
