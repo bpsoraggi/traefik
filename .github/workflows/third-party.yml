@@ -100,7 +100,7 @@ jobs:
           SBOM last updated at: \`${{ steps.get_sbom.outputs.last_updated }} WET\`
 
           > [!WARNING]
-          > Assimilis failed. Please check the log below for details.
+          > Assimilis failed. Please fix the issues below and re-run the workflow.
 
           <details><summary>Details</summary>
 
@@ -131,9 +131,9 @@ jobs:
         with:
           # token: ${{ secrets.TRAEFIKER_GITHUB_TOKEN }}
           add-paths: "third_party/"
-          commit-message: "chore(deps): update sbom and third-party attributions"
+          commit-message: "chore(deps): update sbom and third-party attributions (test fail)"
           # committer: "Traefiker <traefiker@github.com>"
-          branch: third-party-${{ github.ref_name }}
+          branch: fail-third-party-${{ github.ref_name }}
           delete-branch: true
           base: "test/assimilis"
           title: "chore(deps): update sbom and third-party attributions"
