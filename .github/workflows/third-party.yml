@@ -131,9 +131,9 @@ jobs:
         with:
           # token: ${{ secrets.TRAEFIKER_GITHUB_TOKEN }}
           add-paths: "third_party/"
-          commit-message: "chore(deps): update sbom and third-party attributions"
+          commit-message: "chore(deps): update sbom and third-party attributions (test fail)"
           # committer: "Traefiker <traefiker@github.com>"
-          branch: third-party-${{ github.ref_name }}
+          branch: fail-third-party-${{ github.ref_name }}
           delete-branch: true
           base: "test/assimilis"
           title: "chore(deps): update sbom and third-party attributions"
