@@ -4,7 +4,7 @@ This product uses source code from third party libraries which carry
 their own copyright notices and license terms. These notices are provided
 below.
 
-Generated at: 2026-01-09T16:41:44Z
+Generated at: 2026-01-21T10:29:38Z
 
 ---
 
@@ -3269,16 +3269,6 @@ Licenses: MIT
 Copyright (c) 2020 Nathan Rajlich
 
 
-## @traefiklabs/faency 12.0.4
-
-PURL: pkg:npm/@traefiklabs/faency@12.0.4
-Upstream: [https://www.npmjs.com/package/@traefiklabs/faency](https://www.npmjs.com/package/@traefiklabs/faency)
-
-Licenses: Apache-2.0
-
-Copyright (c) 2022 Traefik Labs
-
-
 ## @tybys/wasm-util 0.10.0
 
 PURL: pkg:npm/@tybys/wasm-util@0.10.0
@@ -4909,6 +4899,16 @@ Licenses: MIT
 Copyright (c) 2014-present Jon Schlinkert
 
 
+## bracex 2.6
+
+PURL: pkg:pypi/bracex@2.6
+Upstream: [https://pypi.org/project/bracex/](https://pypi.org/project/bracex/)
+
+Licenses: MIT
+
+Copyright (c) 2018 - 2025 Isaac Muse
+
+
 ## browser-assert 1.2.1
 
 PURL: pkg:npm/browser-assert@1.2.1
@@ -5277,16 +5277,6 @@ Upstream: [https://www.npmjs.com/package/clone](https://www.npmjs.com/package/cl
 Licenses: MIT
 
 Copyright (c) 2011-2015 Paul Vorbach
-
-
-## cloud.google.com/go/auth v0.17.0
-
-PURL: pkg:golang/cloud.google.com/go/auth@v0.17.0
-Upstream: [https://pkg.go.dev/cloud.google.com/go/auth](https://pkg.go.dev/cloud.google.com/go/auth)
-
-Licenses: Apache-2.0
-
-Copyright (c) 2014 Google Inc.
 
 
 ## cloud.google.com/go/compute/metadata v0.9.0
@@ -7129,6 +7119,16 @@ Licenses: MIT
 Copyright (c) 2023-10-01 Microsoft Corporation
 
 
+## github.com/BurntSushi/toml v1.6.0
+
+PURL: pkg:golang/github.com/BurntSushi/toml@v1.6.0
+Upstream: [https://github.com/BurntSushi/toml](https://github.com/BurntSushi/toml)
+
+Licenses: MIT
+
+Copyright (c) 2013 TOML authors
+
+
 ## github.com/Microsoft/go-winio v0.6.2
 
 PURL: pkg:golang/github.com/Microsoft/go-winio@v0.6.2
@@ -7189,9 +7189,9 @@ Licenses: Apache-2.0
 Copyright (c) 2009-present Alibaba Cloud
 
 
-## github.com/alibabacloud-go/tea v1.3.14
+## github.com/alibabacloud-go/tea v1.4.0
 
-PURL: pkg:golang/github.com/alibabacloud-go/tea@v1.3.14
+PURL: pkg:golang/github.com/alibabacloud-go/tea@v1.4.0
 Upstream: [https://github.com/alibabacloud-go/tea](https://github.com/alibabacloud-go/tea)
 
 Licenses: Apache-2.0
@@ -7409,9 +7409,9 @@ Licenses: MIT
 Copyright (c) 2013 Ernest Micklei
 
 
-## github.com/exoscale/egoscale/v3 v3.1.31
+## github.com/exoscale/egoscale/v3 v3.1.33
 
-PURL: pkg:golang/github.com/exoscale/egoscale@v3.1.31#v3
+PURL: pkg:golang/github.com/exoscale/egoscale@v3.1.33#v3
 Upstream: [https://github.com/exoscale/egoscale](https://github.com/exoscale/egoscale)
 
 Licenses: Apache-2.0
@@ -7489,9 +7489,9 @@ Licenses: Apache-2.0
 Copyright (c) 2009-present Alibaba Cloud
 
 
-## github.com/go-acme/esa-20240910/v2 v2.40.3
+## github.com/go-acme/esa-20240910/v2 v2.44.0
 
-PURL: pkg:golang/github.com/go-acme/esa-20240910@v2.40.3#v2
+PURL: pkg:golang/github.com/go-acme/esa-20240910@v2.44.0#v2
 Upstream: [https://github.com/go-acme/esa-20240910](https://github.com/go-acme/esa-20240910)
 
 Licenses: Apache-2.0
@@ -7499,9 +7499,19 @@ Licenses: Apache-2.0
 Copyright (c) 2009-present Alibaba Cloud
 
 
-## github.com/go-acme/lego/v4 v4.30.1
+## github.com/go-acme/jdcloud-sdk-go v1.64.0
 
-PURL: pkg:golang/github.com/go-acme/lego@v4.30.1#v4
+PURL: pkg:golang/github.com/go-acme/jdcloud-sdk-go@v1.64.0
+Upstream: [https://github.com/go-acme/jdcloud-sdk-go](https://github.com/go-acme/jdcloud-sdk-go)
+
+Licenses: Apache-2.0
+
+Copyright (c) 京东云
+
+
+## github.com/go-acme/lego/v4 v4.31.0
+
+PURL: pkg:golang/github.com/go-acme/lego@v4.31.0#v4
 Upstream: [https://github.com/go-acme/lego](https://github.com/go-acme/lego)
 
 Licenses: MIT
@@ -7569,14 +7579,14 @@ Licenses: MIT
 Copyright (c) 2016 Go Playground
 
 
-## github.com/go-resty/resty/v2 v2.17.0
+## github.com/go-resty/resty/v2 v2.17.1
 
-PURL: pkg:golang/github.com/go-resty/resty@v2.17.0#v2
+PURL: pkg:golang/github.com/go-resty/resty@v2.17.1#v2
 Upstream: [https://github.com/go-resty/resty](https://github.com/go-resty/resty)
 
 Licenses: MIT
 
-Copyright (c) 2024 Jeevanandam M.
+Copyright (c) 2015-2024 Jeevanandam M.
 
 
 ## github.com/go-viper/mapstructure/v2 v2.4.0
@@ -7659,9 +7669,9 @@ Licenses: BSD-3-Clause
 Copyright (c) 2017 The Go Authors
 
 
-## github.com/google/go-querystring v1.1.0
+## github.com/google/go-querystring v1.2.0
 
-PURL: pkg:golang/github.com/google/go-querystring@v1.1.0
+PURL: pkg:golang/github.com/google/go-querystring@v1.2.0
 Upstream: [https://github.com/google/go-querystring](https://github.com/google/go-querystring)
 
 Licenses: BSD-3-Clause
@@ -7679,9 +7689,9 @@ Licenses: BSD-3-Clause
 Copyright (c) 2014 Google Inc.
 
 
-## github.com/googleapis/gax-go/v2 v2.15.0
+## github.com/googleapis/gax-go/v2 v2.16.0
 
-PURL: pkg:golang/github.com/googleapis/gax-go@v2.15.0#v2
+PURL: pkg:golang/github.com/googleapis/gax-go@v2.16.0#v2
 Upstream: [https://github.com/googleapis/gax-go](https://github.com/googleapis/gax-go)
 
 Licenses: BSD-3-Clause
@@ -7729,9 +7739,9 @@ Licenses: MPL-2.0
 Copyright (c) 2014 IBM Corp. AND Copyright (c) 2025 IBM Corp.
 
 
-## github.com/huaweicloud/huaweicloud-sdk-go-v3 v0.1.180
+## github.com/huaweicloud/huaweicloud-sdk-go-v3 v0.1.182
 
-PURL: pkg:golang/github.com/huaweicloud/huaweicloud-sdk-go-v3@v0.1.180
+PURL: pkg:golang/github.com/huaweicloud/huaweicloud-sdk-go-v3@v0.1.182
 Upstream: [https://github.com/huaweicloud/huaweicloud-sdk-go-v3](https://github.com/huaweicloud/huaweicloud-sdk-go-v3)
 
 Licenses: Apache-2.0, BSD-2-Clause, BSD-3-Clause
@@ -7789,9 +7799,9 @@ Licenses: Apache-2.0
 Copyright (c) 2016 Docker, Inc. AND Copyright (c) 2022 Valkeyrie Authors
 
 
-## github.com/linode/linodego v1.62.0
+## github.com/linode/linodego v1.64.0
 
-PURL: pkg:golang/github.com/linode/linodego@v1.62.0
+PURL: pkg:golang/github.com/linode/linodego@v1.64.0
 Upstream: [https://github.com/linode/linodego](https://github.com/linode/linodego)
 
 Licenses: MIT
@@ -7939,9 +7949,9 @@ Licenses: MIT
 Copyright (c) 2017 Andrew AND Copyright (c) 2018-2024 NRDCG authors
 
 
-## github.com/nrdcg/oci-go-sdk/common/v1065 v1065.105.1
+## github.com/nrdcg/oci-go-sdk/common/v1065 v1065.105.2
 
-PURL: pkg:golang/github.com/nrdcg/oci-go-sdk@v1065.105.1#common/v1065
+PURL: pkg:golang/github.com/nrdcg/oci-go-sdk@v1065.105.2#common/v1065
 Upstream: [https://github.com/nrdcg/oci-go-sdk](https://github.com/nrdcg/oci-go-sdk)
 
 Licenses: Apache-2.0, UPL-1.0
@@ -7949,9 +7959,9 @@ Licenses: Apache-2.0, UPL-1.0
 Copyright (c) 2023-01-01 John Doe
 
 
-## github.com/nrdcg/oci-go-sdk/dns/v1065 v1065.105.1
+## github.com/nrdcg/oci-go-sdk/dns/v1065 v1065.105.2
 
-PURL: pkg:golang/github.com/nrdcg/oci-go-sdk@v1065.105.1#dns/v1065
+PURL: pkg:golang/github.com/nrdcg/oci-go-sdk@v1065.105.2#dns/v1065
 Upstream: [https://github.com/nrdcg/oci-go-sdk](https://github.com/nrdcg/oci-go-sdk)
 
 Licenses: Apache-2.0, UPL-1.0
@@ -8079,9 +8089,9 @@ Licenses: MIT
 Copyright (c) 2019 Marten Seemann
 
 
-## github.com/quic-go/quic-go v0.58.0
+## github.com/quic-go/quic-go v0.59.0
 
-PURL: pkg:golang/github.com/quic-go/quic-go@v0.58.0
+PURL: pkg:golang/github.com/quic-go/quic-go@v0.59.0
 Upstream: [https://github.com/quic-go/quic-go](https://github.com/quic-go/quic-go)
 
 Licenses: MIT
@@ -8089,9 +8099,9 @@ Licenses: MIT
 Copyright (c) 2016 the quic-go authors & Google, Inc.
 
 
-## github.com/scaleway/scaleway-sdk-go v1.0.0-beta.35
+## github.com/scaleway/scaleway-sdk-go v1.0.0-beta.36
 
-PURL: pkg:golang/github.com/scaleway/scaleway-sdk-go@v1.0.0-beta.35
+PURL: pkg:golang/github.com/scaleway/scaleway-sdk-go@v1.0.0-beta.36
 Upstream: [https://github.com/scaleway/scaleway-sdk-go](https://github.com/scaleway/scaleway-sdk-go)
 
 Licenses: Apache-2.0
@@ -8169,9 +8179,9 @@ Licenses: BSD-3-Clause
 Copyright (c) 2020 Tailscale
 
 
-## github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.12
+## github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.3.28
 
-PURL: pkg:golang/github.com/tencentcloud/tencentcloud-sdk-go@v1.3.12#tencentcloud/common
+PURL: pkg:golang/github.com/tencentcloud/tencentcloud-sdk-go@v1.3.28#tencentcloud/common
 Upstream: [https://github.com/tencentcloud/tencentcloud-sdk-go](https://github.com/tencentcloud/tencentcloud-sdk-go)
 
 Licenses: Apache-2.0
@@ -8229,9 +8239,9 @@ Licenses: Apache-2.0
 Copyright (c) 2018 Comcast Cable Communications Management, LLC
 
 
-## github.com/volcengine/volc-sdk-golang v1.0.230
+## github.com/volcengine/volc-sdk-golang v1.0.233
 
-PURL: pkg:golang/github.com/volcengine/volc-sdk-golang@v1.0.230
+PURL: pkg:golang/github.com/volcengine/volc-sdk-golang@v1.0.233
 Upstream: [https://github.com/volcengine/volc-sdk-golang](https://github.com/volcengine/volc-sdk-golang)
 
 Licenses: Apache-2.0
@@ -8239,9 +8249,9 @@ Licenses: Apache-2.0
 Copyright (c) 2023 Beijing Volcano Engine Technology Ltd.
 
 
-## github.com/vultr/govultr/v3 v3.26.0
+## github.com/vultr/govultr/v3 v3.26.1
 
-PURL: pkg:golang/github.com/vultr/govultr@v3.26.0#v3
+PURL: pkg:golang/github.com/vultr/govultr@v3.26.1#v3
 Upstream: [https://github.com/vultr/govultr](https://github.com/vultr/govultr)
 
 Licenses: MIT
@@ -8259,9 +8269,9 @@ Licenses: MIT
 Copyright (c) 2019 Montgomery Edwards and Faye Amacker
 
 
-## github.com/yandex-cloud/go-genproto v0.41.0
+## github.com/yandex-cloud/go-genproto v0.43.0
 
-PURL: pkg:golang/github.com/yandex-cloud/go-genproto@v0.41.0
+PURL: pkg:golang/github.com/yandex-cloud/go-genproto@v0.43.0
 Upstream: [https://github.com/yandex-cloud/go-genproto](https://github.com/yandex-cloud/go-genproto)
 
 Licenses: MIT
@@ -8269,9 +8279,9 @@ Licenses: MIT
 Copyright (c) 2018 YANDEX LLC
 
 
-## github.com/yandex-cloud/go-sdk/services/dns v0.0.23
+## github.com/yandex-cloud/go-sdk/services/dns v0.0.25
 
-PURL: pkg:golang/github.com/yandex-cloud/go-sdk@v0.0.23#services/dns
+PURL: pkg:golang/github.com/yandex-cloud/go-sdk@v0.0.25#services/dns
 Upstream: [https://github.com/yandex-cloud/go-sdk](https://github.com/yandex-cloud/go-sdk)
 
 Licenses: MIT
@@ -8279,9 +8289,9 @@ Licenses: MIT
 Copyright (c) 2018 YANDEX LLC
 
 
-## github.com/yandex-cloud/go-sdk/v2 v2.33.0
+## github.com/yandex-cloud/go-sdk/v2 v2.37.0
 
-PURL: pkg:golang/github.com/yandex-cloud/go-sdk@v2.33.0#v2
+PURL: pkg:golang/github.com/yandex-cloud/go-sdk@v2.37.0#v2
 Upstream: [https://github.com/yandex-cloud/go-sdk](https://github.com/yandex-cloud/go-sdk)
 
 Licenses: MIT
@@ -8537,16 +8547,6 @@ Upstream: [https://pkg.go.dev/go.yaml.in/yaml/v3](https://pkg.go.dev/go.yaml.in/
 Licenses: Apache-2.0, MIT
 
 Copyright (c) 2011 Kirill Simonov AND Copyright (c) 2019 Canonical Ltd
-
-
-## google.golang.org/api v0.257.0
-
-PURL: pkg:golang/google.golang.org/api@v0.257.0
-Upstream: [https://pkg.go.dev/google.golang.org/api](https://pkg.go.dev/google.golang.org/api)
-
-Licenses: BSD-3-Clause
-
-Copyright (c) 2011 Google Inc.
 
 
 ## gopd 1.2.0
@@ -10569,16 +10569,6 @@ Licenses: MIT
 Copyright (c) 2016 Baz
 
 
-## markdown-include 0.5.1
-
-PURL: pkg:pypi/markdown-include@0.5.1
-Upstream: [https://pypi.org/project/markdown-include/](https://pypi.org/project/markdown-include/)
-
-Licenses: GPL-3.0-only
-
-Copyright (c) 2007 Free Software Foundation, Inc.
-
-
 ## marked-terminal 5.2.0
 
 PURL: pkg:npm/marked-terminal@5.2.0
@@ -10744,7 +10734,7 @@ Copyright (c) 2014 Sindre Sorhus AND Copyright (c) 2014 James Kyle
 PURL: pkg:npm/minimatch@9.0.5
 Upstream: [https://www.npmjs.com/package/minimatch](https://www.npmjs.com/package/minimatch)
 
-Licenses: MIT
+Licenses: ISC
 
 Copyright (c) 2011-2023 Isaac Z. Schlueter and Contributors
 
@@ -10849,6 +10839,16 @@ Licenses: MIT
 Copyright (c) 2023 Oleh Prypin
 
 
+## mkdocs-include-markdown-plugin 7.2.0
+
+PURL: pkg:pypi/mkdocs-include-markdown-plugin@7.2.0
+Upstream: [https://pypi.org/project/mkdocs-include-markdown-plugin/](https://pypi.org/project/mkdocs-include-markdown-plugin/)
+
+Licenses: Apache-2.0
+
+Copyright (c) 2017-2025 Joe Rickerby and Contributors
+
+
 ## mkdocs-material-extensions 1.3.1
 
 PURL: pkg:pypi/mkdocs-material-extensions@1.3.1
@@ -10859,9 +10859,9 @@ Licenses: MIT
 Copyright (c) 2021 Isaac Muse
 
 
-## mkdocs 1.2.4
+## mkdocs 1.4.3
 
-PURL: pkg:pypi/mkdocs@1.2.4
+PURL: pkg:pypi/mkdocs@1.4.3
 Upstream: [https://pypi.org/project/mkdocs/](https://pypi.org/project/mkdocs/)
 
 Licenses: MIT
