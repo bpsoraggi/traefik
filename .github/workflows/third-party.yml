@@ -23,7 +23,7 @@ jobs:
       - name: Setup go
         uses: actions/setup-go@v6
         with:
-          go-version: '1.25'
+          go-version: "1.25"
           # go-version-file: go.mod
 
       - name: Get Aikido credentials
@@ -46,6 +46,7 @@ jobs:
           echo "AIKIDO_TOKEN=$token" >> $GITHUB_ENV
 
       - name: Get SBOM
+        id: get_sbom
         env:
           AIKIDO_TOKEN: ${{ env.AIKIDO_TOKEN }}
         run: |
@@ -56,6 +57,13 @@ jobs:
             --header 'accept: application/json' \
             --header "authorization: Bearer $AIKIDO_TOKEN" \
             -o third_party/sbom/traefik.cdx.json
+
+          unixtime=$(curl -sS --request GET \
+            --url https://app.aikido.dev/api/public/v1/repositories/code/${{ env.AIKIDO_REPO_CODE }} \
+            --header 'accept: application/json' \
+            --header "authorization: Bearer $AIKIDO_TOKEN" | jq -r '.last_scanned_at')
+          last_updated=$(date -d @$unixtime +'%Y-%m-%d %H:%M:%S')
+          echo "last_updated=$last_updated" >> $GITHUB_OUTPUT
 
       - name: Install Assimilis ${{ env.ASSIMILIS_VERSION }}
         run: |
@@ -71,13 +79,39 @@ jobs:
           $HOME/bin/assimilis --repo-name ${{ github.event.repository.name }} 2>&1 | tee third_party/assimilis.log
           exit_code=${PIPESTATUS[0]}
           set -e
-          pr_body="> [!NOTE]
-            > testing PASS"
-          if [ $exit_code -ne 0 ]; then
-            pr_body="> [!IMPORTANT]
-            > testing FAIL"
+          echo "exit_code=$exit_code" >> $GITHUB_OUTPUT
+
+      - name: Prepare PR body
+        id: pr_body
+        run: |
+          set -euo pipefail
+          BODY_FILE=$(mktemp)
+          if [ "${{ steps.generate_attributions.outputs.exit_code }}" == "0" ]; then
+            cat > $BODY_FILE << EOF
+          Updates SBOM & third-party attribution files using [Assimilis](https://github.com/traefik/assimilis) \`${{ env.ASSIMILIS_VERSION }}\` :ant:
+
+          SBOM last updated at: \`${{ steps.get_sbom.outputs.last_updated }} WET\`
+          EOF
+          else
+            log_content=$(cat third_party/assimilis.log | sed 's/\x1B\[[0-9;]*[a-zA-Z]//g')
+            cat > $BODY_FILE << EOF
+          Updates SBOM & third-party attribution files using [Assimilis](https://github.com/traefik/assimilis) \`${{ env.ASSIMILIS_VERSION }}\` :ant:
+
+          SBOM last updated at: \`${{ steps.get_sbom.outputs.last_updated }} WET\`
+
+          > [!WARNING]
+          > Assimilis failed. Please check the log below for details.
+
+          <details><summary>Details</summary>
+
+          \`\`\`shell
+
+          $log_content
+          \`\`\`
+          EOF
           fi
-          echo "PR_BODY=$pr_body" >> $GITHUB_OUTPUT
+
+          echo "body_file=$BODY_FILE" >> $GITHUB_OUTPUT
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -92,7 +126,6 @@ jobs:
       #     committer_name: "traefiker@github"
       #     committer_email: "30906710+traefiker@users.noreply.github.com"
 
-
       - name: create PR
         uses: peter-evans/create-pull-request@v8
         with:
@@ -103,10 +136,10 @@ jobs:
           branch: third-party-${{ github.ref_name }}
           delete-branch: true
           base: "test/assimilis"
-          title: 'chore(deps): update sbom and third-party attributions'
+          title: "chore(deps): update sbom and third-party attributions"
           # labels: kind/enhancement,status/2-needs-review
-          body: ${{ steps.generate_attributions.outputs.PR_BODY }}
+          body-path: ${{ steps.pr_body.outputs.body_file }}
           # body: |
           #   ### Motivation
-            
+
           #   Update the SBOM and third-party attributions to the latest versions.
