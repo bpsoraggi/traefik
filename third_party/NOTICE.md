@@ -4,7 +4,7 @@ This product uses source code from third party libraries which carry
 their own copyright notices and license terms. These notices are provided
 below.
 
-Generated at: 2026-07-14T18:44:44Z
+Generated at: 2026-07-15T10:25:03Z
 
 ---
 
@@ -6899,6 +6899,16 @@ Licenses: MIT
 Copyright (c) 2016 Sindre Sorhus
 
 
+## importlib-metadata 9.0.0
+
+PURL: pkg:pypi/importlib-metadata@9.0.0
+Upstream: [https://pypi.org/project/importlib-metadata/](https://pypi.org/project/importlib-metadata/)
+
+Licenses: Apache-2.0
+
+Copyright (c) Open Source Contributors
+
+
 ## imurmurhash 0.1.4
 
 PURL: pkg:npm/imurmurhash@0.1.4
@@ -8759,9 +8769,9 @@ Licenses: Apache-2.0, BSD-3-Clause
 Copyright (c) 2017 Paul Ganssle AND Copyright (c) 2017 dateutil contributors AND Copyright (c) 2011 Gustavo Niemeyer AND Copyright (c) 2014 Tomi Pieviläinen AND Copyright (c) 2016 Yaron de Leeuw
 
 
-## pyyaml-env-tag 0.1
+## pyyaml-env-tag 1.1
 
-PURL: pkg:pypi/pyyaml-env-tag@0.1
+PURL: pkg:pypi/pyyaml-env-tag@1.1
 Upstream: [https://pypi.org/project/pyyaml-env-tag/](https://pypi.org/project/pyyaml-env-tag/)
 
 Licenses: MIT
