@@ -119,12 +119,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          tar cfz "dist/traefik-${VERSION}.src.tar.gz" \
-            --exclude-vcs \
-            --exclude .idea \
-            --exclude .github \
-            --exclude dist .
-
-          chown -R "$(id -u)":"$(id -g)" dist/
           tar cfz "dist/third_party_${VERSION}.tar.gz" third_party/
-          gh release create ${VERSION} ./dist/**/traefik*.{zip,tar.gz} ./dist/traefik*.{tar.gz,txt} ./dist/third_party_${VERSION}.tar.gz --repo bpsoraggi/traefik --title ${VERSION} --notes ${VERSION} --latest=false
+          gh release create ${VERSION} ./dist/third_party_${VERSION}.tar.gz --repo bpsoraggi/traefik --title ${VERSION} --notes ${VERSION} --latest=false
