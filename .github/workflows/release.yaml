@@ -8,13 +8,11 @@ on:
 env:
   CGO_ENABLED: 0
   VERSION: ${{ github.ref_name }}
-  TRAEFIKER_EMAIL: "traefiker@traefik.io"
-  CODENAME: mimolette
 
 jobs:
 
   validate-third-party:
-    if: github.ref_type == 'tag' && github.repository == 'traefik/traefik'
+    if: github.ref_type == 'tag' && github.repository == 'bpsoraggi/traefik'
     runs-on: ubuntu-latest
 
     steps:
@@ -30,13 +28,13 @@ jobs:
         run: make validate-third-party
 
   build-webui:
-    if: github.ref_type == 'tag' && github.repository == 'traefik/traefik'
+    if: github.ref_type == 'tag' && github.repository == 'bpsoraggi/traefik'
     needs:
       - validate-third-party
     uses: ./.github/workflows/template-webui.yaml
 
   build:
-    if: github.ref_type == 'tag' && github.repository == 'traefik/traefik'
+    if: github.ref_type == 'tag' && github.repository == 'bpsoraggi/traefik'
     runs-on: ubuntu-latest
 
     strategy:
@@ -101,7 +99,7 @@ jobs:
           retention-days: 1
 
   release:
-    if: github.ref_type == 'tag' && github.repository == 'traefik/traefik'
+    if: github.ref_type == 'tag' && github.repository == 'bpsoraggi/traefik'
     runs-on: ubuntu-latest
 
     needs:
@@ -124,13 +122,6 @@ jobs:
           tar xvf webui.tar.gz
           rm webui.tar.gz
 
-      - name: Retrieve the secret and decode it to a file
-        env:
-          TRAEFIKER_RSA: ${{ secrets.TRAEFIKER_RSA }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "${TRAEFIKER_RSA}" | base64 --decode > ~/.ssh/traefiker_rsa
-
       - name: Download All Artifacts
         uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
         with:
@@ -152,6 +143,4 @@ jobs:
 
           chown -R "$(id -u)":"$(id -g)" dist/
           tar cfz "dist/third_party_${VERSION}.tar.gz" third_party/
-          gh release create ${VERSION} ./dist/**/traefik*.{zip,tar.gz} ./dist/traefik*.{tar.gz,txt} ./dist/third_party_${VERSION}.tar.gz --repo traefik/traefik --title ${VERSION} --notes ${VERSION} --latest=false
-
-          ./script/deploy.sh
+          gh release create ${VERSION} ./dist/**/traefik*.{zip,tar.gz} ./dist/traefik*.{tar.gz,txt} ./dist/third_party_${VERSION}.tar.gz --repo bpsoraggi/traefik --title ${VERSION} --notes ${VERSION} --latest=false
