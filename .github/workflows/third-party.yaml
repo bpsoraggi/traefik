@@ -54,7 +54,7 @@ jobs:
         shell: bash
         env:
           AIK_CLIENT: ${{ secrets.AIK_CLIENT }}
-          AIK_SECRET: ${{ secrets.AIK_SECRET }}
+          AIK_SECRET: ""
         run: |
           make refresh-third-party 2>&1 | tee "${RUNNER_TEMP}/assimilis.log"
           generated_at=$(cat third_party/.last_generated_at)
