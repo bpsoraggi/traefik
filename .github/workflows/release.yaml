@@ -39,7 +39,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ linux-amd64, linux-386, linux-arm, linux-arm64, linux-ppc64le, linux-s390x, linux-riscv64, darwin-amd64, darwin-arm64, windows-amd64, windows-arm64, windows-386, freebsd-amd64, freebsd-386, openbsd-amd64, openbsd-386, openbsd-riscv64 ]
+        os: [ linux-amd64 ]
     needs:
       - build-webui
       - validate-third-party
@@ -73,20 +73,6 @@ jobs:
 
       - name: Go generate
         run: go generate
-
-
-      - name: Generate goreleaser file
-        run: |
-          GORELEASER_CONFIG_FILE_PATH=$(go run ./internal/release "${{ matrix.os }}")
-          echo "GORELEASER_CONFIG_FILE_PATH=$GORELEASER_CONFIG_FILE_PATH" >> $GITHUB_ENV
-
-      - name: Build with goreleaser
-        uses: goreleaser/goreleaser-action@f06c13b6b1a9625abc9e6e439d9c05a8f2190e94 # v7.2.3
-        with:
-          distribution: goreleaser
-          # 'latest', 'nightly', or a semver
-          version: '~> v2'
-          args: release --clean --timeout="90m" --config "${{ env.GORELEASER_CONFIG_FILE_PATH }}"
 
       - name: Artifact binaries
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
