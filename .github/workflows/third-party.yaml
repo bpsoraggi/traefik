@@ -54,7 +54,7 @@ jobs:
         shell: bash
         env:
           AIK_CLIENT: ${{ secrets.AIK_CLIENT }}
-          AIK_SECRET: ""
+          AIK_SECRET: ${{ secrets.AIK_SECRET }}
         run: |
           make refresh-third-party 2>&1 | tee "${RUNNER_TEMP}/assimilis.log"
           generated_at=$(cat third_party/.last_generated_at)
@@ -103,4 +103,5 @@ jobs:
 
             Attributions generated at: `${{ steps.generate.outputs.generated_at }}`.
 
-            Review and merge this PR before tagging the release.
+            > [!WARNING]
+            > Review and merge this PR before tagging the release.
