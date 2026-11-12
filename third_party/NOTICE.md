@@ -4,7 +4,7 @@ This product uses source code from third party libraries which carry
 their own copyright notices and license terms. These notices are provided
 below.
 
-Generated at: 2026-10-13T14:40:21Z
+Generated at: 2026-11-12T15:03:08Z
 
 ---
 
@@ -5239,6 +5239,16 @@ Licenses: Apache-2.0
 Copyright (c) 2016-present Datadog, Inc.
 
 
+## github.com/DataDog/go-runtime-metrics-internal v0.0.4-0.20260217080614-b0f4edc38a6d
+
+PURL: pkg:golang/github.com/DataDog/go-runtime-metrics-internal@v0.0.4-0.20260217080614-b0f4edc38a6d
+Upstream: [https://github.com/DataDog/go-runtime-metrics-internal](https://github.com/DataDog/go-runtime-metrics-internal)
+
+Licenses: Apache-2.0
+
+copyright notice that is included in or attached to the work
+
+
 ## github.com/DataDog/go-sqllexer v0.1.13
 
 PURL: pkg:golang/github.com/DataDog/go-sqllexer@v0.1.13
@@ -5659,6 +5669,16 @@ Licenses: MIT
 Copyright (c) 2014 Justinas Stankevicius
 
 
+## github.com/containous/go-http-auth v0.4.1-0.20260804094822-b975dcaa8c48
+
+PURL: pkg:golang/github.com/containous/go-http-auth@v0.4.1-0.20260804094822-b975dcaa8c48
+Upstream: [https://github.com/containous/go-http-auth](https://github.com/containous/go-http-auth)
+
+Licenses: Apache-2.0
+
+copyright notice that is included in or attached to the work
+
+
 ## github.com/containous/minheap v0.0.0-20190809180810-6e71eb837595
 
 PURL: pkg:golang/github.com/containous/minheap@v0.0.0-20190809180810-6e71eb837595
@@ -5947,16 +5967,6 @@ Upstream: [https://github.com/go-acme/tencentedgdeone](https://github.com/go-acm
 Licenses: Apache-2.0
 
 Copyright (c) 2017-2018 Tencent Ltd.
-
-
-## github.com/go-jose/go-jose/v4 v4.1.5
-
-PURL: pkg:golang/github.com/go-jose/go-jose@v4.1.5#v4
-Upstream: [https://github.com/go-jose/go-jose](https://github.com/go-jose/go-jose)
-
-Licenses: Apache-2.0
-
-Copyright (c) 2020-01-01 ACME Corp
 
 
 ## github.com/go-kit/kit v0.13.0
@@ -6389,6 +6399,16 @@ Licenses: MPL-2.0
 copyright doctrines of fair use, fair dealing, or other equivalents.
 
 
+## github.com/hashicorp/nomad/api v0.0.0-20231213195942-64e3dca9274b
+
+PURL: pkg:golang/github.com/hashicorp/nomad@v0.0.0-20231213195942-64e3dca9274b#api
+Upstream: [https://github.com/hashicorp/nomad](https://github.com/hashicorp/nomad)
+
+Licenses: BUSL-1.1
+
+Copyright (c) 2020 MariaDB Corporation Ab AND Copyright (c) 2024 IBM Corp.
+
+
 ## github.com/hashicorp/serf v0.10.1
 
 PURL: pkg:golang/github.com/hashicorp/serf@v0.10.1
@@ -6799,6 +6819,16 @@ Licenses: MIT
 Copyright (c) 2021 Manabu Sonoda
 
 
+## github.com/minio/simdjson-go v0.4.5
+
+PURL: pkg:golang/github.com/minio/simdjson-go@v0.4.5
+Upstream: [https://github.com/minio/simdjson-go](https://github.com/minio/simdjson-go)
+
+Licenses: Apache-2.0
+
+copyright notice that is included in or attached to the work
+
+
 ## github.com/mitchellh/copystructure v1.2.0
 
 PURL: pkg:golang/github.com/mitchellh/copystructure@v1.2.0
@@ -7157,6 +7187,16 @@ Upstream: [https://github.com/peterhellberg/link](https://github.com/peterhellbe
 Licenses: MIT
 
 Copyright (c) 2015-2022 Peter Hellberg https://c7.se
+
+
+## github.com/petermattis/goid v0.0.0-20260226131333-17d1149c6ac6
+
+PURL: pkg:golang/github.com/petermattis/goid@v0.0.0-20260226131333-17d1149c6ac6
+Upstream: [https://github.com/petermattis/goid](https://github.com/petermattis/goid)
+
+Licenses: Apache-2.0
+
+copyright notice that is included in or attached to the work
 
 
 ## github.com/philhofer/fwd v1.2.0
@@ -7699,16 +7739,6 @@ Licenses: Apache-2.0
 copyright notice that is included in or attached to the work
 
 
-## github.com/traefik/yaegi v0.16.1
-
-PURL: pkg:golang/github.com/traefik/yaegi@v0.16.1
-Upstream: [https://github.com/traefik/yaegi](https://github.com/traefik/yaegi)
-
-Licenses: Apache-2.0
-
-copyright notice that is included in or attached to the work
-
-
 ## github.com/trailofbits/go-mutexasserts v0.0.0-20250514102930-c1f3d2e37561
 
 PURL: pkg:golang/github.com/trailofbits/go-mutexasserts@v0.0.0-20250514102930-c1f3d2e37561
@@ -8039,6 +8069,36 @@ Licenses: Apache-2.0
 copyright notice that is included in or attached to the work
 
 
+## go.opentelemetry.io/collector/component v1.51.1-0.20260205185216-81bc641f26c0
+
+PURL: pkg:golang/go.opentelemetry.io/collector/component@v1.51.1-0.20260205185216-81bc641f26c0
+Upstream: [https://pkg.go.dev/go.opentelemetry.io/collector/component](https://pkg.go.dev/go.opentelemetry.io/collector/component)
+
+Licenses: Apache-2.0
+
+copyright notice that is included in or attached to the work
+
+
+## go.opentelemetry.io/collector/featuregate v1.51.1-0.20260205185216-81bc641f26c0
+
+PURL: pkg:golang/go.opentelemetry.io/collector/featuregate@v1.51.1-0.20260205185216-81bc641f26c0
+Upstream: [https://pkg.go.dev/go.opentelemetry.io/collector/featuregate](https://pkg.go.dev/go.opentelemetry.io/collector/featuregate)
+
+Licenses: Apache-2.0
+
+copyright notice that is included in or attached to the work
+
+
+## go.opentelemetry.io/collector/pdata v1.51.1-0.20260205185216-81bc641f26c0
+
+PURL: pkg:golang/go.opentelemetry.io/collector/pdata@v1.51.1-0.20260205185216-81bc641f26c0
+Upstream: [https://pkg.go.dev/go.opentelemetry.io/collector/pdata](https://pkg.go.dev/go.opentelemetry.io/collector/pdata)
+
+Licenses: Apache-2.0
+
+copyright notice that is included in or attached to the work
+
+
 ## go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.71.0
 
 PURL: pkg:golang/go.opentelemetry.io/contrib/instrumentation@v0.71.0#net/http/otelhttp
@@ -8139,14 +8199,14 @@ Licenses: Apache-2.0, MIT
 copyright staring in 2011 when the project was ported over:
 
 
-## golang.org/x/crypto v0.57.0
+## golang.org/x/crypto v0.58.0
 
-PURL: pkg:golang/golang.org/x/crypto@v0.57.0
+PURL: pkg:golang/golang.org/x/crypto@v0.58.0
 Upstream: [https://pkg.go.dev/golang.org/x/crypto](https://pkg.go.dev/golang.org/x/crypto)
 
 Licenses: BSD-3-Clause
 
-Copyright (c) The Go Authors
+Copyright 2009 The Go Authors.
 
 
 ## golang.org/x/exp v0.0.0-20260410095643-746e56fc9e2f
@@ -8169,6 +8229,16 @@ Licenses: BSD-3-Clause
 Copyright (c) The Go Authors
 
 
+## golang.org/x/net v0.62.0
+
+PURL: pkg:golang/golang.org/x/net@v0.62.0
+Upstream: [https://pkg.go.dev/golang.org/x/net](https://pkg.go.dev/golang.org/x/net)
+
+Licenses: BSD-3-Clause
+
+Copyright 2009 The Go Authors.
+
+
 ## golang.org/x/oauth2 v0.36.0
 
 PURL: pkg:golang/golang.org/x/oauth2@v0.36.0
@@ -8179,44 +8249,44 @@ Licenses: BSD-3-Clause
 Copyright 2009 The Go Authors.
 
 
-## golang.org/x/sync v0.23.0
+## golang.org/x/sync v0.24.0
 
-PURL: pkg:golang/golang.org/x/sync@v0.23.0
+PURL: pkg:golang/golang.org/x/sync@v0.24.0
 Upstream: [https://pkg.go.dev/golang.org/x/sync](https://pkg.go.dev/golang.org/x/sync)
 
 Licenses: BSD-3-Clause
 
-Copyright (c) The Go Authors
+Copyright 2009 The Go Authors.
 
 
-## golang.org/x/sys v0.48.0
+## golang.org/x/sys v0.49.0
 
-PURL: pkg:golang/golang.org/x/sys@v0.48.0
+PURL: pkg:golang/golang.org/x/sys@v0.49.0
 Upstream: [https://pkg.go.dev/golang.org/x/sys](https://pkg.go.dev/golang.org/x/sys)
 
 Licenses: BSD-3-Clause
 
-Copyright (c) The Go Authors
+Copyright 2009 The Go Authors.
 
 
-## golang.org/x/term v0.46.0
+## golang.org/x/term v0.47.0
 
-PURL: pkg:golang/golang.org/x/term@v0.46.0
+PURL: pkg:golang/golang.org/x/term@v0.47.0
 Upstream: [https://pkg.go.dev/golang.org/x/term](https://pkg.go.dev/golang.org/x/term)
 
 Licenses: BSD-3-Clause
 
-Copyright (c) The Go Authors
+Copyright 2009 The Go Authors.
 
 
-## golang.org/x/text v0.42.0
+## golang.org/x/text v0.43.0
 
-PURL: pkg:golang/golang.org/x/text@v0.42.0
+PURL: pkg:golang/golang.org/x/text@v0.43.0
 Upstream: [https://pkg.go.dev/golang.org/x/text](https://pkg.go.dev/golang.org/x/text)
 
 Licenses: BSD-3-Clause
 
-Copyright (c) The Go Authors
+Copyright 2009 The Go Authors.
 
 
 ## golang.org/x/time v0.16.0
@@ -8229,14 +8299,14 @@ Licenses: BSD-3-Clause
 Copyright (c) The Go Authors
 
 
-## golang.org/x/tools v0.49.0
+## golang.org/x/tools v0.51.0
 
-PURL: pkg:golang/golang.org/x/tools@v0.49.0
+PURL: pkg:golang/golang.org/x/tools@v0.51.0
 Upstream: [https://pkg.go.dev/golang.org/x/tools](https://pkg.go.dev/golang.org/x/tools)
 
 Licenses: BSD-3-Clause
 
-Copyright (c) The Go Authors
+Copyright 2009 The Go Authors.
 
 
 ## golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da
@@ -8357,6 +8427,16 @@ Upstream: [https://pkg.go.dev/gopkg.in/yaml.v3](https://pkg.go.dev/gopkg.in/yaml
 Licenses: Apache-2.0, MIT
 
 copyright staring in 2011 when the project was ported over:
+
+
+## goreleaser/goreleaser-action f06c13b6b1a9625abc9e6e439d9c05a8f2190e94
+
+PURL: pkg:github/goreleaser/goreleaser-action@f06c13b6b1a9625abc9e6e439d9c05a8f2190e94
+
+
+Licenses: MIT
+
+Copyright (c) 2019-2022 CrazyMax
 
 
 ## graceful-fs 4.2.11
@@ -9179,10 +9259,40 @@ Licenses: MIT
 Copyright (c) 2012-2015 JP Richardson
 
 
+## k8s.io/api v0.35.1
+
+PURL: pkg:golang/k8s.io/api@v0.35.1
+Upstream: [https://pkg.go.dev/k8s.io/api](https://pkg.go.dev/k8s.io/api)
+
+Licenses: Apache-2.0
+
+copyright notice that is included in or attached to the work
+
+
 ## k8s.io/apiextensions-apiserver v0.26.3
 
 PURL: pkg:golang/k8s.io/apiextensions-apiserver@v0.26.3
 Upstream: [https://pkg.go.dev/k8s.io/apiextensions-apiserver](https://pkg.go.dev/k8s.io/apiextensions-apiserver)
+
+Licenses: Apache-2.0
+
+copyright notice that is included in or attached to the work
+
+
+## k8s.io/apimachinery v0.35.1
+
+PURL: pkg:golang/k8s.io/apimachinery@v0.35.1
+Upstream: [https://pkg.go.dev/k8s.io/apimachinery](https://pkg.go.dev/k8s.io/apimachinery)
+
+Licenses: Apache-2.0
+
+copyright notice that is included in or attached to the work
+
+
+## k8s.io/client-go v0.35.1
+
+PURL: pkg:golang/k8s.io/client-go@v0.35.1
+Upstream: [https://pkg.go.dev/k8s.io/client-go](https://pkg.go.dev/k8s.io/client-go)
 
 Licenses: Apache-2.0
 
@@ -10349,9 +10459,9 @@ Licenses: MIT
 Copyright (c) 2016 Sindre Sorhus
 
 
-## platformdirs 4.13.0
+## platformdirs 4.14.5
 
-PURL: pkg:pypi/platformdirs@4.13.0
+PURL: pkg:pypi/platformdirs@4.14.5
 Upstream: [https://pypi.org/project/platformdirs/](https://pypi.org/project/platformdirs/)
 
 Licenses: MIT
@@ -11966,7 +12076,7 @@ Upstream: [https://www.npmjs.com/package/type-fest](https://www.npmjs.com/packag
 
 Licenses: CC0-1.0, MIT
 
-Copyright (c) Sindre Sorhus
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https:/sindresorhus.com)
 
 
 ## type-fest 4.26.1
@@ -11976,7 +12086,7 @@ Upstream: [https://www.npmjs.com/package/type-fest](https://www.npmjs.com/packag
 
 Licenses: CC0-1.0, MIT
 
-Copyright (c) Sindre Sorhus
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https:/sindresorhus.com)
 
 
 ## type-is 1.6.18
